@@ -95,6 +95,25 @@ To see how you can add code snippets, see below:
     --border-radius: 1rem;
     --container-padding: 2rem;
 }
+
+.chart-component__column::after {
+    content: '$' attr(data-amount);
+
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: -3rem;
+    opacity: 0;
+
+    transform: translateX(-50%);
+
+    padding: 0.5rem 1rem;
+    background-color: var(--clr-neutral-400);
+    border-radius: var(--_column-radius);
+    color: var(--clr-neutral-100);
+
+    transition: opacity .1s ease-in-out;
+}
 ```
 ```js
 function markHighestColumn(elements) {
