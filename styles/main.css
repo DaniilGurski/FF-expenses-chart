@@ -1,0 +1,192 @@
+:root {
+    --clr-primary-100: hsl(186, 34%, 60%);
+    --clr-primary-200: hsl(10, 79%, 65%);
+
+    --clr-neutral-100 : hsl(33, 100%, 98%);
+    --clr-neutral-200: hsl(27, 66%, 92%);
+    --clr-neutral-300: hsl(28, 10%, 53%);
+    --clr-neutral-400: hsl(25, 47%, 15%);
+
+    --ff-primary: 'DM Sans', sans-serif;
+    --ff-body: var(--ff-primary);
+    --ff-heading: var(--ff-primary);
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    --fs-100: 1.125rem;
+    --fs-200: 1.75rem;
+    --fs-300: 2rem;
+
+    --fs-body: var(--fs-100);
+    --fs-heading: var(--ff-200);
+
+    --border-radius: 1rem;
+    --container-padding: 2rem;
+}
+
+
+.fw-accent {
+    font-weight: var(--fw-bold);
+}
+
+
+.page__body {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body);
+
+    background-color: var(--clr-neutral-200);
+
+    display: grid;
+    place-items: center;
+}
+
+
+.main-wrapper {
+    width: min(80%, 500px);
+}
+
+
+.header {
+    background-color: var(--clr-primary-200);
+    padding: var(--container-padding);
+    border-radius: var(--border-radius);
+
+    color: var(--clr-neutral-100);
+
+    margin-bottom: 1rem;
+}
+
+
+.header__balance-visual {
+    border-radius: 50%;
+    background-color: var(--clr-neutral-400);
+
+    width: 50px; height: 50px;
+
+    position: relative;
+}
+
+
+.header__balance-visual::before {
+    content: "";
+    width: inherit; height: inherit;
+
+    border: 2px solid;
+    border-radius: 50%;
+
+    position: absolute;
+    transform: translateX(-45%);
+}
+
+
+.header__balance-value {
+    font-size: var(--fs-200);
+}
+
+
+.main {
+    background-color: var(--clr-neutral-100);
+    padding: var(--container-padding);
+    border-radius: var(--border-radius);
+}
+
+
+.main__spending-days {
+    font-size: var(--fs-200);
+}
+
+
+.chart-wrapper {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+
+    align-items: flex-end;
+    column-gap: 1rem;
+
+    color: var(--clr-neutral-300);
+
+    height: 250px;
+}
+
+
+.chart-component {
+    justify-content: flex-end;
+}
+
+
+.chart-component__column {  
+    --_col-hover: var(--col-hover, hsl(10, 79%, 80%));
+    --_column-radius: 0.3rem;
+
+    flex: 1;
+    width:100%;
+
+    background-color: var(--clr-primary-200);
+    border-radius: var(--_column-radius);
+
+    position: relative;
+    cursor: pointer;
+}
+
+
+.chart-component__column--highest {
+    --col-hover: hsl(186, 34%, 80%);
+    background-color: var(--clr-primary-100);
+}
+
+
+.chart-component__column:hover {
+    background-color: var(--_col-hover);
+}
+
+
+.chart-component__column::after {
+    content: '$' attr(data-amount);
+
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: -3rem;
+    opacity: 0;
+
+    transform: translateX(-50%);
+
+    padding: 0.5rem 1rem;
+    background-color: var(--clr-neutral-400);
+    border-radius: var(--_column-radius);
+    color: var(--clr-neutral-100);
+
+    transition: opacity .1s ease-in-out;
+}
+
+
+.chart-component__column:hover::after {
+    opacity: 1;
+}
+
+
+/* horisontal line seperating the charts and total costs section */
+.main__hr {
+    border: none;
+    height: 1px;
+    background-color: var(--clr-neutral-300);
+
+    margin-block: 1rem;
+}
+
+
+.total-costs {
+    color: var(--clr-neutral-300);
+}
+
+
+.total-costs__cost {
+    color: var(--clr-neutral-400);
+    font-size: var(--fs-300);
+}
+
+
+.total-costs__profit-percent{
+    color: var(--clr-neutral-400);
+}
